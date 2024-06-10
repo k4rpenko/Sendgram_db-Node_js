@@ -40,7 +40,7 @@ export default function Register() {
     }
 
     try {
-      const res = await fetch('/api/auth/register', {
+      const res = await fetch('http://localhost:3001/api/auth/Regists', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,6 +49,16 @@ export default function Register() {
       });
 
       if (res.ok || res.status === 200) {
+        const data = await res.json();
+        var refreshToken = data.refreshToken
+        var userPreferences = data.userPreferences
+        const ress = await fetch('api/creatCookie', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ refreshToken, userPreferences }),
+        });
         setError(false);
         window.location.href = '/home';
       } else if (res.status === 401) {

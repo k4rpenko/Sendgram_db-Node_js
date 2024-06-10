@@ -65,8 +65,9 @@ export default function Home() {
   const handleAdd = async function(e: { preventDefault: () => void; }) { 
     e.preventDefault();
     try {
-      const res = await fetch('/api/homes', {
+      const res = await fetch('http://localhost:3001/api/Home', {
         method: "POST",
+        credentials: 'include',
         headers: {
           "Content-Type": "application/json",
         },

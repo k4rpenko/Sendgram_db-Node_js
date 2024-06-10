@@ -41,7 +41,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch('http://localhost:3001/api/auth/Regists', {
+        const res = await fetch('http://localhost:3001/api/auth/Login', {
           method: "GET",
           credentials: 'include',
           cache: 'no-store',

@@ -24,28 +24,29 @@ export default function ProfileEditor({onClose }: ProfileEditorProps){
       const formData = new FormData();
 
       // Handle avatar file input
-      if (inputavatar.current?.files) {
-        Array.from(inputavatar.current.files).forEach((file) => {
-          formData.append("avatar", file);
+        if (inputavatar.current?.files) {
+          Array.from(inputavatar.current.files).forEach((file) => {
+            formData.append("avatar", file);
+          });
+        }
+
+        if (inputbackgroundimg.current?.files) {
+          Array.from(inputbackgroundimg.current.files).forEach((file) => {
+            formData.append("background", file);
+          });
+        }
+        
+        formData.append("nick", nick);
+        formData.append("name", name);
+        formData.append("bio", bio);
+        console.log(formData);
+
+
+        const res = await fetch('http://localhost:3001/api/Settings', {
+          method: "POST",
+          credentials: 'include',
+          body: formData,
         });
-      }
-
-      if (inputbackgroundimg.current?.files) {
-        Array.from(inputbackgroundimg.current.files).forEach((file) => {
-          formData.append("background", file);
-        });
-      }
-      
-      formData.append("nick", nick);
-      formData.append("name", name);
-      formData.append("bio", bio);
-      console.log(formData);
-
-
-      const res = await fetch('/api/settings/ChangeProfile', {
-        method: "POST",
-        body: formData,
-      });
       if (res.ok) {
         window.location.href = '' + nick;
       }
@@ -57,8 +58,9 @@ export default function ProfileEditor({onClose }: ProfileEditorProps){
   useEffect(() => {
     const fetchAvatar = async () => {
       try {
-        const res = await fetch('/api/homes', {
+        const res = await fetch('http://localhost:3001/api/Home', {
           method: 'GET',
+          credentials: 'include',
           cache: 'no-store',
         });
         if(res.ok){

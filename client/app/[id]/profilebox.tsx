@@ -95,7 +95,7 @@ export default function Profiles() {
 
   const handleAddFollow = async () => {
     try {
-      const res = await fetch('/api/homes/follow', {
+      const res = await fetch('http://localhost:3001/api/Follow', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -104,6 +104,7 @@ export default function Profiles() {
       });
       if (res.ok) {
         setValidFollow(true);
+        setfollowers_countURL(prevCount => prevCount + 1);
       }
     } catch (error) {
       console.error('Error during follow operation:', error);
@@ -112,7 +113,7 @@ export default function Profiles() {
 
   const handleRemoveFollow = async () => {
     try {
-      const res = await fetch('/api/homes/UnFollow', {
+      const res = await fetch('http://localhost:3001/api/UnFollow', {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -121,6 +122,7 @@ export default function Profiles() {
       });
       if (res.ok) {
         setValidFollow(false);
+        setfollowers_countURL(prevCount => prevCount - 1);
       }
     } catch (error) {
       console.error('Error during unfollow operation:', error);
