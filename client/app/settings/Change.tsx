@@ -6,6 +6,7 @@ interface ProfileEditorProps {
 }
 
 export default function ProfileEditor({onClose }: ProfileEditorProps){
+  
   const [backgroundimg, setbackgroundimg] = useState('');
   const [avatar, setavatar] = useState('');
   const [nick, setNick] = useState('');
@@ -144,3 +145,4 @@ export default function ProfileEditor({onClose }: ProfileEditorProps){
     </div>
   );
 };
+

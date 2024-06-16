@@ -54,9 +54,19 @@
 
 
 .ProfilHome {
+  padding: 10px;
+  padding-right: 20px;
+  border-radius: 25px;
+  background-color: transparent;
+  border: none;
   margin-bottom: 50px;
   display: flex;
   margin-top: auto;
+  cursor: pointer;
+}
+
+.ProfilHome:hover{
+  background-color: #181818;
 }
 
 .ProfilHome h3 {

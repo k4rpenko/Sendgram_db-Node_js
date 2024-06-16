@@ -8,10 +8,10 @@ import style from "../../styles/Pr.module.css";
 
 export default function Profiles() {
   const [backgroundimg, setbackgroundimg] = useState('');
+  const [UserLogoURL, setUserLogoURL] = useState("");
   const [ProfileNick, setProfileNick] = useState("");
   const nickURL = usePathname()?.substring(1);
   const [NamePortURL, setNamePortURL] = useState('');
-  const [UserLogoURL, setUserLogoURL] = useState("");
   const [BioURL, setBioURL] = useState('');
   const [u_followers_countURL, setu_followers_countURL] = useState(0);
   const [followers_countURL, setfollowers_countURL] = useState(0);
@@ -177,3 +177,4 @@ export default function Profiles() {
     </div>
   );
 }
+

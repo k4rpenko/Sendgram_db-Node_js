@@ -1,0 +1,38 @@
+{
+    "version": 2,
+    "projects": [
+      {
+        "name": "server",
+        "root": "server/",
+        "builds": [
+          {
+            "src": "./server/main.js",
+            "use": "@vercel/node"
+          }
+        ],
+        "routes": [
+          {
+            "src": "/api/(.*)",
+            "dest": "./server/main.js"
+          }
+        ]
+      },
+      {
+        "name": "client",
+        "root": "client/",
+        "builds": [
+          {
+            "src": "**/*.js",
+            "use": "@vercel/static-build"
+          }
+        ],
+        "routes": [
+          {
+            "src": "/(.*)",
+            "dest": "client/$1"
+          }
+        ]
+      }
+    ]
+}
+  
